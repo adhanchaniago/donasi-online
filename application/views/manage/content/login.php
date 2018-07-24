@@ -16,7 +16,7 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>CoreUI Free Bootstrap Admin Template</title>
+    <title>Manage Donasi Online</title>
     <!-- Icons-->
     <link href="<?= base_url(); ?>assets/manage/node_modules/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
     <link href="<?= base_url(); ?>assets/manage/node_modules/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
@@ -53,7 +53,8 @@
                 </div>
                 <div class="row">
                   <div class="col-6">
-                    <button class="btn btn-primary px-4" type="button">Login</button>
+                    <!-- <button class="btn btn-primary px-4" type="button">Login</button> -->
+                    <a href="<?= base_url('manage/dashboard'); ?>" class="btn btn-primary px-4">Login</a>
                   </div>
                   <div class="col-6 text-right">
                     <button class="btn btn-link px-0" type="button">Forgot password?</button>

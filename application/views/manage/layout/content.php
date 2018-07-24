@@ -3,12 +3,35 @@
         <nav class="sidebar-nav">
           <ul class="nav">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">
+              <a class="nav-link" href="<?= base_url('manage/dashboard'); ?>">
                 <i class="nav-icon icon-speedometer"></i> Dashboard
                 <span class="badge badge-primary">NEW</span>
               </a>
             </li>
-            <li class="nav-title">Theme</li>
+            <li class="nav-title">List</li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" href="colors.html">
+                <i class="nav-icon icon-layers"></i>Galang Dana
+                <!-- <i class="nav-icon icon-drop"></i> Galang Dana</a> -->
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" href="typography.html">
+                <i class="icons cui-user"></i> Users</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" href="typography.html">
+                <i class="icons cui-people"></i> Donatur</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" href="typography.html">
+                <i class="fa fa-folder-o"></i> Laporan</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" href="typography.html">
+                <i class="fa fa-sign-out"></i> Keluar</a>
+            </li>
+            <!-- <li class="nav-title">Theme</li>
             <li class="nav-item">
               <a class="nav-link" href="colors.html">
                 <i class="nav-icon icon-drop"></i> Colors</a>
@@ -195,7 +218,7 @@
                 <i class="nav-icon icon-layers"></i> Try CoreUI
                 <strong>PRO</strong>
               </a>
-            </li>
+            </li> -->
           </ul>
         </nav>
         <button class="sidebar-minimizer brand-minimizer" type="button"></button>

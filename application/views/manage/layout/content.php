@@ -5,7 +5,7 @@
             <li class="nav-item">
               <a class="nav-link" href="<?= base_url('manage/dashboard'); ?>">
                 <i class="nav-icon icon-speedometer"></i> Dashboard
-                <span class="badge badge-primary">NEW</span>
+                <!-- <span class="badge badge-primary">NEW</span> -->
               </a>
             </li>
             <li class="nav-title">List</li>
@@ -69,7 +69,7 @@
           </li>
           <li class="breadcrumb-item active">Dashboard</li>
           <!-- Breadcrumb Menu-->
-          <li class="breadcrumb-menu d-md-down-none">
+          <!-- <li class="breadcrumb-menu d-md-down-none">
             <div class="btn-group" role="group" aria-label="Button group">
               <a class="btn" href="#">
                 <i class="icon-speech"></i>
@@ -79,7 +79,7 @@
               <a class="btn" href="#">
                 <i class="icon-settings"></i>  Settings</a>
             </div>
-          </li>
+          </li> -->
         </ol>
         <div class="container-fluid">
         <?php $this->load->view($content); ?>          

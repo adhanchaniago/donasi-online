@@ -29,7 +29,7 @@
   <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
 
     <?php $this->load->view('manage/layout/header'); ?>
-    <?php $this->load->view($content); ?>
+    <?php $this->load->view('manage/layout/content'); ?>
     <?php $this->load->view('manage/layout/footer'); ?>
 
     <!-- CoreUI and necessary plugins-->
@@ -43,5 +43,8 @@
     <script src="<?= base_url(); ?>assets/manage/node_modules/chart.js/dist/Chart.min.js"></script>
     <script src="<?= base_url(); ?>assets/manage/node_modules/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/js/custom-tooltips.min.js"></script>
     <script src="<?= base_url(); ?>assets/manage/js/main.js"></script>
+    <script src="<?= base_url(); ?>assets/vendor/datatables.net-bs4/js/jquery.dataTables.js"></script>
+    <script src="<?= base_url(); ?>assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.js"></script>
+    <script src="<?= base_url(); ?>assets/vendor/datatables.net-bs4/js/datatables.js"></script>
   </body>
 </html>

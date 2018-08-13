@@ -2,7 +2,10 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-            <strong>Tambah</strong> Kegiatan</div>
+                <?php 
+                    $act = $this->uri->segment(3);
+                ?>
+            <strong><?php echo ucfirst($act); ?></strong> Kegiatan</div>
             <div class="card-body">
             <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                 
@@ -51,7 +54,16 @@
             </div>
             <div class="card-footer" align="center">
             <button class="btn btn-sm btn-primary" type="submit" style="width:50%">
-                <i class="fa fa-dot-circle-o"></i> Simpan</button>
+                <i class="fa fa-dot-circle-o"></i> 
+                <?php
+                    if($act == 'update'){
+                        $btn = "Ubah";
+                    }else{
+                        $btn = "Simpan";
+                    }
+                    echo $btn;
+                ?>
+            </button>
             <!-- <button class="btn btn-sm btn-danger" type="reset">
                 <i class="fa fa-ban"></i> Reset</button> -->
             </div>

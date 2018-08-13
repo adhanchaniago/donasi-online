@@ -14,11 +14,11 @@
                 <i class="fa fa-window-maximize"></i> Kegiatan
               </a>
             </li>
-            <li class="nav-item">
-              <a href="<?= base_url('manage/konfirmasi'); ?>" class="nav-link">
+            <!-- <li class="nav-item">
+              <a href="<?//= base_url('manage/konfirmasi'); ?>" class="nav-link">
                 <i class="fa fa-check-circle"></i> Konfirmasi
               </a>
-            </li>
+            </li> -->
             <li class="nav-item nav-dropdown">
               <a class="nav-link nav-dropdown-toggle" href="#">
                 <i class="fa fa-list-alt"></i> Data</a>
@@ -29,7 +29,7 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="<?= base_url('manage/data/donasi'); ?>">
-                    <i class="fa fa-money"></i> Donasi</a>
+                    <i class="fa fa-money"></i> Donatur</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="<?= base_url('manage/data/bank'); ?>">

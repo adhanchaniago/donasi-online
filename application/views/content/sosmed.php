@@ -2,7 +2,7 @@
     <div class="container" style="padding: 5px;color:black;line-height: 45px;">
         <div class="row">
             <div class="col-sm-4" style="font-size: 20px;">
-            DonasiOnline.com
+            Donasi Online Pay
             </div>
             <div class="col-sm-4" style="text-align: center;">
                 Temukan Kami di :

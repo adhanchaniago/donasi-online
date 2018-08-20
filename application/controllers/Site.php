@@ -6,4 +6,12 @@ class Site extends CI_Controller {
 	{
 		$this->load->view('main_layout');
 	}
+
+	public function action($type="",$act=""){
+		if($type == 'add'){
+			if($act == 'donasi'){
+				$this->load->view('content/_form_donasi');
+			}
+		}
+	}
 }

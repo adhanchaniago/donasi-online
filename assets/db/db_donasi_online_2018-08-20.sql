@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.21)
 # Database: db_donasi_online
-# Generation Time: 2018-08-06 06:46:47 +0000
+# Generation Time: 2018-08-20 06:36:57 +0000
 # ************************************************************
 
 
@@ -46,6 +46,41 @@ VALUES
 UNLOCK TABLES;
 
 
+# Dump of table app_donatur
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `app_donatur`;
+
+CREATE TABLE `app_donatur` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_lengkap` char(100) DEFAULT NULL,
+  `email` char(100) DEFAULT NULL,
+  `no_telpon` char(100) DEFAULT NULL,
+  `id_kegiatan` int(11) DEFAULT NULL,
+  `nama_kegiatan` char(100) DEFAULT NULL,
+  `deskripsi` char(100) DEFAULT NULL,
+  `image` char(100) DEFAULT NULL,
+  `target_dana` int(20) DEFAULT NULL,
+  `unix_id` char(11) DEFAULT NULL,
+  `id_bank_transfer` char(11) DEFAULT NULL,
+  `konfirmasi` int(11) DEFAULT '0',
+  `bukti_donasi` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `app_donatur` WRITE;
+/*!40000 ALTER TABLE `app_donatur` DISABLE KEYS */;
+
+INSERT INTO `app_donatur` (`id`, `nama_lengkap`, `email`, `no_telpon`, `id_kegiatan`, `nama_kegiatan`, `deskripsi`, `image`, `target_dana`, `unix_id`, `id_bank_transfer`, `konfirmasi`, `bukti_donasi`, `created_at`)
+VALUES
+	(1,'hendrik rismawan','hendrik@gmail.com','081223459873',1,'bukber pay 2018','bukber pay 2018 bersama 500++ anak yatim','bukber.jpg',150000000,'374','003',0,NULL,'2018-07-01 14:00:00'),
+	(2,'agustria','agustria12@gmail.com','081943242343',3,'mangroving pay 2018','mangroving bersama 100++ anak yatim','event2.jpg',100000000,'375','003',0,NULL,'2018-07-02 14:00:00');
+
+/*!40000 ALTER TABLE `app_donatur` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 # Dump of table app_kegiatan
 # ------------------------------------------------------------
 
@@ -69,7 +104,7 @@ LOCK TABLES `app_kegiatan` WRITE;
 INSERT INTO `app_kegiatan` (`id`, `nama_kegiatan`, `deskripsi`, `image`, `target_dana`, `unix_id`, `start_date`, `end_date`)
 VALUES
 	(1,'buker pay 2018','bukber pay bersama 500++ anak yatim','event1.jpg',170000000,374,'2018-02-01','2018-06-25'),
-	(3,'mangroving pay 2018','mangroving bersama 100++ anak yatim','event2.jpg',170000000,374,'2018-02-01','2018-06-25');
+	(3,'mangroving pay 2018','mangroving bersama 100++ anak yatim','event2.jpg',100000000,375,'2018-03-01','2018-04-30');
 
 /*!40000 ALTER TABLE `app_kegiatan` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -104,8 +139,8 @@ LOCK TABLES `app_trx_donatur` WRITE;
 
 INSERT INTO `app_trx_donatur` (`id`, `id_users`, `id_kegiatan`, `jumlah_donasi`, `unix_id`, `id_bank_transfer`, `konfirmasi`, `bukti_donasi`, `created_at`)
 VALUES
-	('TRX02081801',3,1,100000,'345','003',0,'bukti.jpg','2018-08-02 20:00:00'),
-	('TRX02081802',3,3,500000,'345','003',0,'bukti.jpg','2018-08-02 20:00:00');
+	('TRX02081801',1,1,100000,'374','003',0,'bukti.jpg','2018-08-01 20:00:00'),
+	('TRX02081802',3,3,500000,'375','003',0,'bukti2.jpg','2018-08-02 20:00:00');
 
 /*!40000 ALTER TABLE `app_trx_donatur` ENABLE KEYS */;
 UNLOCK TABLES;

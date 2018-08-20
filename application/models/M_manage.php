@@ -22,4 +22,11 @@ class M_manage extends CI_Model {
         $result = $this->db->query($query);
         return $result->result_array();
     }
+
+    public function execute($table = "", $data = ""){
+        // $query = "INSERT INTO $table VALUES($data)";
+        $this->db->insert($table, $data);
+        // $result = $this->db->query($query);
+        // return $result->result_array();
+    }
 }

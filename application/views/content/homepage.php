@@ -19,15 +19,15 @@
                   <p align="left" style="padding: 10px;">
                     Bukber bersama 500++ laskar langit 
                   </p>
-                  <div class="">
+                  <!-- <div class="">
                     <div class="progress">
                       <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
                         40% Complete (success)
                       </div>
                     </div>
-                  </div>
-                  <br>
-                  <p align="center"><a href="http://bootsnipp.com/" class="btn btn-primary btn-donasi btn-block">Donasi</a></p>
+                  </div> -->
+                  <!-- <br> -->
+                  <p align="center"><a href="<?= base_url('site/action/add/donasi'); ?>" class="btn btn-primary btn-donasi btn-block">Donasi</a></p>
                 </div>
               </div>
           </div>
@@ -40,7 +40,7 @@
                   <p align="left" style="padding: 10px;">
                     Bukber bersama 500++ laskar langit 
                   </p>
-                  <p align="center"><a href="http://bootsnipp.com/" class="btn btn-primary btn-donasi btn-block">Donasi</a></p>
+                  <p align="center"><a href="<?= base_url('site/action/add/donasi'); ?>" class="btn btn-primary btn-donasi btn-block">Donasi</a></p>
                 </div>
               </div>
           </div>
@@ -53,7 +53,7 @@
                   <p align="left" style="padding: 10px;">
                     Bukber bersama 500++ laskar langit 
                   </p>
-                  <p align="center"><a href="http://bootsnipp.com/" class="btn btn-primary btn-donasi btn-block">Donasi</a></p>
+                  <p align="center"><a href="<?= base_url('site/action/add/donasi'); ?>" class="btn btn-primary btn-donasi btn-block">Donasi</a></p>
                 </div>
               </div>
           </div>
@@ -68,7 +68,7 @@
                   <p align="left" style="padding: 10px;">
                     Bukber bersama 500++ laskar langit 
                   </p>
-                  <p align="center"><a href="http://bootsnipp.com/" class="btn btn-primary btn-donasi btn-block">Donasi</a></p>
+                  <p align="center"><a href="<?= base_url('site/action/add/donasi'); ?>" class="btn btn-primary btn-donasi btn-block">Donasi</a></p>
                 </div>
               </div>
           </div>
@@ -81,7 +81,7 @@
                   <p align="left" style="padding: 10px;">
                     Bukber bersama 500++ laskar langit 
                   </p>
-                  <p align="center"><a href="http://bootsnipp.com/" class="btn btn-primary btn-donasi btn-block">Donasi</a></p>
+                  <p align="center"><a href="<?= base_url('site/action/add/donasi'); ?>" class="btn btn-primary btn-donasi btn-block">Donasi</a></p>
                 </div>
               </div>
           </div>
@@ -94,7 +94,7 @@
                   <p align="left" style="padding: 10px;">
                     Bukber bersama 500++ laskar langit 
                   </p>
-                  <p align="center"><a href="http://bootsnipp.com/" class="btn btn-primary btn-donasi btn-block">Donasi</a></p>
+                  <p align="center"><a href="<?= base_url('site/action/add/donasi'); ?>" class="btn btn-primary btn-donasi btn-block">Donasi</a></p>
                 </div>
               </div>
           </div>

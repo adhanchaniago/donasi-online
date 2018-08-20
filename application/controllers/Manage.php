@@ -75,4 +75,40 @@ class Manage extends CI_Controller {
 
 		}
 	}
+
+	public function execute($type=""){
+		$post = $this->input->post();
+		if($type == 'kegiatan'){
+			$target_dir = "assets/upload/";
+            $target_file = $target_dir . time().basename($_FILES["file_input"]["name"]);
+            $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+            $imgName = time().basename($_FILES["file_input"]["name"]);
+            move_uploaded_file($_FILES["file_input"]["tmp_name"], $target_file);
+
+			$data = array(
+				'nama_kegiatan' => $this->input->post('nama_kegiatan'),
+				'deskripsi' => $this->input->post('deskripsi'),
+				'image' => $imgName,//$this->input->post('image'),
+				'target_dana' => $this->input->post('target_dana'),
+				'unix_id' => $this->generateUnixId(),
+				'start_date' => $this->input->post('start_date'),
+				'end_date' => $this->input->post('end_date'),
+			);
+			$this->manage->execute('app_kegiatan',$data);
+
+			redirect('manage/kegiatan');
+		}
+	}
+
+	public function generateUnixId($digits = 9){
+	    $i = 0; //counter
+	    $code = ""; //our default code is blank.
+	    while($i < $digits){
+	        //generate a random number between 0 and 9.
+	        $code .= mt_rand(0, 9);
+	        $i++;
+	    }
+	    echo substr($code,1,3);
+	}
 }
+

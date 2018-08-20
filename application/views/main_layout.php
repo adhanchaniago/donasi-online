@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>DonasiOnline.com</title>
+    <title>Donasi Online Pay</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?= base_url(); ?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -38,7 +38,7 @@
     <!-- Footer -->
     <footer>
       <div class="container text-center">
-        <p>Copyright &copy; DonasiOnline.com 2018</p>
+        <p>Copyright &copy; donasipay.online 2018</p>
       </div>
     </footer>
 

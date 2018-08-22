@@ -1,3 +1,22 @@
+<!-- Navigation -->
+<link href="<?= base_url(); ?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<title>Semua Donasi</title>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" href="/">donasipay</a>
+    </li>
+    <li class="nav-item" style="margin-left: 900px;">
+      <a class="nav-link" href="/">Donasi</a>
+    </li>
+    <!--s<li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#">Disabled</a>
+    </li> -->
+  </ul>
+</nav>
 <section id="download" class="download-section content-section text-center">
       <div class="container">
     <div>
@@ -30,8 +49,10 @@
         <?php } ?>
         </div>
         <br><br>
-        <div align="center">
-          <a href="<?= base_url('site/allDonasi'); ?>" class="btn btn-danger btn-block"> Lihat Semua</a>
-        </div>
       </div>
     </section>
+    <footer>
+      <div class="container text-center">
+        <p>Copyright &copy; donasipay.online 2018</p>
+      </div>
+    </footer>

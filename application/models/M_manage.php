@@ -5,7 +5,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_manage extends CI_Model {
     public function getData($act=""){
         if($act == 'kegiatan'){
-            $query = "SELECT * FROM app_kegiatan";
+            $query = "SELECT * FROM app_kegiatan 
+                      WHERE unix_id IS NOT NULL ORDER BY created_at DESC";
         }elseif($act == 'user'){
             $query = "SELECT a.*,b.categori
                     FROM app_users a

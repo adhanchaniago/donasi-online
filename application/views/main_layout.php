@@ -32,7 +32,7 @@
     <!-- Intro Header -->
     <?php $this->load->view('layout/header') ?>
 
-    <?php $this->load->view('content/homepage'); ?>
+    <?php $this->load->view('content/homepage',$row); ?>
     
     <?php $this->load->view('content/sosmed'); ?>
     <!-- Footer -->

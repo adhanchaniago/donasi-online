@@ -93,6 +93,7 @@ class Manage extends CI_Controller {
 				'unix_id' => $this->generateUnixId(),
 				'start_date' => $this->input->post('start_date'),
 				'end_date' => $this->input->post('end_date'),
+				'created_at' => date("Y-m-d")
 			);
 			$this->manage->execute('app_kegiatan',$data);
 
@@ -108,7 +109,7 @@ class Manage extends CI_Controller {
 	        $code .= mt_rand(0, 9);
 	        $i++;
 	    }
-	    echo substr($code,1,3);
+	    return substr($code,1,3);
 	}
 }
 

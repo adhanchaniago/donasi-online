@@ -41,36 +41,18 @@
                                  </td>
                                  <td><?= $value['end_date']; ?></td>
                                  <td>
-                                    <a class="btn btn-info" href="<?= base_url('manage/action/update/kegiatan/').$value['id']; ?>">
+                                    <a class="btn btn-info" href="<?= base_url('manage/action/update/kegiatan/').base64_encode($value['id']); ?>">
                                         <i class="fa fa-edit "></i>Ubah
                                     </a>
                                     <!-- <a class="btn btn-danger" href="<?//= base_url('manage/action/delete/kegiatan'); ?>">
                                         <i class="fa fa-trash-o "></i>Hapus
                                     </a> -->
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelKeg"><i class="fa fa-trash-o "></i>Hapus</button>
+                                    <a href="<?= base_url('manage/execute/delete/kegiatan/').$value['id']; ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="fa fa-trash-o "></i>Hapus</a>
                                  </td>
                               </tr>
                                <?php } ?>
                            </tbody>
                         </table>
-                        <!-- Modal -->
-                        <div class="modal fade" id="modalDelKeg" role="dialog">
-                            <div class="modal-dialog">
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Apakah Anda yakin ingin menghapaus data ini?</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Hapus</button>
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                      </div>
                   </div>
                </div>

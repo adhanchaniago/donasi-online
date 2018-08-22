@@ -1,79 +1,83 @@
-<div id="ui-view">
-   <div>
-      <link href="<?= base_url('assets/') ?>vendor/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
-      <div class="animated fadeIn">
-         <div class="card">
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
             <div class="card-header">
-               <i class="fa fa-edit"></i> Data Bank
-               <div class="card-header-actions">
-                  <a href="https://datatables.net" class="card-header-action" target="_blank">
-                  <!-- <small class="text-muted">docs</small> -->
-                  </a>
-               </div>
-            </div>
+                <?php 
+                    $act = $this->uri->segment(3);
+                ?>
+            <strong><?php echo ucfirst($act); ?></strong> Bank</div>
             <div class="card-body">
-                <div style="padding: 0px 60px;">
-                    <a href="<?= base_url('manage/action/add/kegiatan'); ?>" class="btn btn-primary btn-sm">Tambah Data</a>
+            <form class="form-horizontal" action="<?= base_url('manage/execute/'.$act.'/bank/').($act == 'add' ? "" : $result[0]['id']); ?>" method="post" enctype="multipart/form-data">
+                
+                <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">Nama Pemilik</label>
+                <div class="col-md-9">
+                    <input class="form-control" id="nama_pemilik" type="text" name="nama_pemilik" required placeholder="Masukan Nama Pemilik" value="<?= isset($result[0]['nama_pemilik']) ? $result[0]['nama_pemilik'] : "" ?>">
+                    <!-- <span class="help-block">This is a help text</span> -->
                 </div>
-                <br>
-               <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
-                  <div class="row">
-                     <div class="col-sm-12">
-                        <table class="table table-striped table-bordered datatable dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info" style="border-collapse: collapse !important">
-                           <thead>
-                              <tr role="row">
-                                 <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column descending" style="width: 202px;">Nama Pemilik</th>
-                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Date registered: activate to sort column ascending" style="width: 170px;">Nama Bank</th>
-                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Role: activate to sort column ascending" style="width: 68px;">No. Rekening</th>
-                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 82px;">Status</th>
-                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending" style="width: 168px;">Actions</th>
-                              </tr>
-                           </thead>
-                           <tbody>
-                               <?php foreach($result as $value){ ?>
-                              <tr role="row" class="odd">
-                                 <td class="sorting_1"><?= $value['nama_pemilik']; ?></td>
-                                 <td><?= $value['nama_bank']; ?></td>
-                                 <td><?= $value['no_rekening']; ?></td>
-                                 <td>
-                                    <?= ($value['status'] == 1 ? 'Publish' : 'Tidak Publish'); ?>
-                                 </td>
-                                 <td>
-                                    <a class="btn btn-info" href="<?= base_url('manage/action/update/kegiatan'); ?>">
-                                        <i class="fa fa-edit "></i>Ubah
-                                    </a>
-                                    <!-- <a class="btn btn-danger" href="<?//= base_url('manage/action/delete/kegiatan'); ?>">
-                                        <i class="fa fa-trash-o "></i>Hapus
-                                    </a> -->
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelKeg"><i class="fa fa-trash-o "></i>Hapus</button>
-                                 </td>
-                              </tr>
-                               <?php } ?>
-                           </tbody>
-                        </table>
-                        <!-- Modal -->
-                        <div class="modal fade" id="modalDelKeg" role="dialog">
-                            <div class="modal-dialog">
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Apakah Anda yakin ingin menghapaus data ini?</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Hapus</button>
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="password-input">Nama Bank</label>
+                    <div class="col-md-9">
+                        <input class="form-control" id="nama_bank" type="text" name="nama_bank" required placeholder="Masukan Nama Bank" value="<?= isset($result[0]['nama_bank']) ? $result[0]['nama_bank'] : "" ?>">
+                        <!-- <span class="help-block">Please enter a complex password</span> -->
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="password-input">No. Rekening</label>
+                    <div class="col-md-9">
+                        <input class="form-control" id="no_rekening" type="text" name="no_rekening" required placeholder="ex. 32242342"  value="<?= isset($result[0]['no_rekening']) ? $result[0]['no_rekening'] : "" ?>">
+                        <!-- <span class="help-block">Please enter a complex password</span> -->
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="password-input">Kode Bank</label>
+                    <div class="col-md-9">
+                        <input class="form-control" id="id_bank" type="text" name="id_bank" required placeholder="Masukan Kode Bank"  value="<?= isset($result[0]['cabang']) ? $result[0]['cabang'] : "" ?>">
+                        <!-- <span class="help-block">Please enter a complex password</span> -->
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="password-input">Cabang</label>
+                    <div class="col-md-9">
+                        <input class="form-control" id="cabang" type="text" name="cabang" required placeholder="Masukan Nama Cabang"  value="<?= isset($result[0]['cabang']) ? $result[0]['cabang'] : "" ?>">
+                        <!-- <span class="help-block">Please enter a complex password</span> -->
+                    </div>
+                </div>
+                    <?php
+                        if($act == 'update'){
+                            $btn = "Ubah";
+                            $display = "style='display:none'";
+                        }else{
+                            $btn = "Simpan";
+                            $display = "";
+                        }
+                        // echo $btn;
+                    ?>
+                <div class="form-group row" <?= $display ?>>
+                    <label class="col-md-3 col-form-label" for="file-input">Logo Bank</label>
+                    <div class="col-md-9">
+                        <input id="img" type="file" name="file_input">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="file-input">Status</label>
+                    <div class="col-md-9">
+                        <select name="status" id="" class="form-control">
+                            <option value="1">Publish</option>
+                            <option value="0">Tidak Publish</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-footer" align="center">
+                    <input class="btn btn-sm btn-primary" type="submit" value="<?= $btn ?>" style="width:50%">
+                        <!-- <i class="fa fa-dot-circle-o"></i>  -->
+                <!-- <button class="btn btn-sm btn-danger" type="reset">
+                    <i class="fa fa-ban"></i> Reset</button> -->
+                </div>
+            </form>
             </div>
-         </div>
-      </div>
-   </div>
+        </div>
+    </div>
+    <!-- /.col-->
 </div>

@@ -1,79 +1,67 @@
-<div id="ui-view">
-   <div>
-      <link href="<?= base_url('assets/') ?>vendor/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
-      <div class="animated fadeIn">
-         <div class="card">
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
             <div class="card-header">
-               <i class="fa fa-edit"></i> Data User
-               <div class="card-header-actions">
-                  <a href="https://datatables.net" class="card-header-action" target="_blank">
-                  <!-- <small class="text-muted">docs</small> -->
-                  </a>
-               </div>
-            </div>
+                <?php 
+                    $act = $this->uri->segment(3);
+                ?>
+            <strong><?php echo ucfirst($act); ?></strong> User</div>
             <div class="card-body">
-                <div style="padding: 0px 60px;">
-                    <a href="<?= base_url('manage/action/add/kegiatan'); ?>" class="btn btn-primary btn-sm">Tambah Data</a>
+            <form class="form-horizontal" action="<?= base_url('manage/execute/'.$act.'/user/').($act == 'add' ? "" : $result[0]['id']); ?>" method="post">
+                
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="text-input">Nama Lengkap</label>
+                    <div class="col-md-9">
+                        <input class="form-control" id="nama_lengkap" type="text" name="nama_lengkap" required placeholder="Masukan Nama Lengkap" value="<?= isset($result[0]['fullname']) ? $result[0]['fullname'] : "" ?>">
+                        <!-- <span class="help-block">This is a help text</span> -->
+                    </div>
                 </div>
-                <br>
-               <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
-                  <div class="row">
-                     <div class="col-sm-12">
-                        <table class="table table-striped table-bordered datatable dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info" style="border-collapse: collapse !important">
-                           <thead>
-                              <tr role="row">
-                                 <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column descending" style="width: 202px;">Nama</th>
-                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Date registered: activate to sort column ascending" style="width: 170px;">Email</th>
-                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Role: activate to sort column ascending" style="width: 68px;">No. Telpon</th>
-                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 82px;">User</th>
-                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending" style="width: 168px;">Actions</th>
-                              </tr>
-                           </thead>
-                           <tbody>
-                               <?php foreach($result as $value){?>
-                              <tr role="row" class="odd">
-                                 <td class="sorting_1"><?= $value['fullname']; ?></td>
-                                 <td><?= $value['email']; ?></td>
-                                 <td><?= $value['no_telpon']; ?></td>
-                                 <td>
-                                    <?= $value['categori']; ?>
-                                 </td>
-                                 <td>
-                                    <a class="btn btn-info" href="<?= base_url('manage/action/update/kegiatan'); ?>">
-                                        <i class="fa fa-edit "></i>Ubah
-                                    </a>
-                                    <!-- <a class="btn btn-danger" href="<?//= base_url('manage/action/delete/kegiatan'); ?>">
-                                        <i class="fa fa-trash-o "></i>Hapus
-                                    </a> -->
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelKeg"><i class="fa fa-trash-o "></i>Hapus</button>
-                                 </td>
-                              </tr>
-                               <?php } ?>
-                           </tbody>
-                        </table>
-                        <!-- Modal -->
-                        <div class="modal fade" id="modalDelKeg" role="dialog">
-                            <div class="modal-dialog">
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Apakah Anda yakin ingin menghapaus data ini?</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Hapus</button>
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="password-input">Email</label>
+                    <div class="col-md-9">
+                        <input class="form-control" id="email" type="text" name="email" required placeholder="example@example.com"  value="<?= isset($result[0]['email']) ? $result[0]['email'] : "" ?>">
+                        <!-- <span class="help-block">Please enter a complex password</span> -->
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="password-input">Password</label>
+                    <div class="col-md-9">
+                        <input class="form-control" id="password" type="password" name="password" required placeholder="Masukan Password" value="<?= isset($result[0]['password']) ? $result[0]['password'] : "" ?>">
+                        <!-- <span class="help-block">Please enter a complex password</span> -->
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label" for="password-input">No. Telpon</label>
+                    <div class="col-md-9">
+                        <input class="form-control" id="no_telpon" type="text" name="no_telpon" required placeholder="0819xxxxxxxx"  value="<?= isset($result[0]['no_telpon']) ? $result[0]['no_telpon'] : "" ?>">
+                        <!-- <span class="help-block">Please enter a complex password</span> -->
+                    </div>
+                </div>
+                    <?php
+                        if($act == 'update'){
+                            $btn = "Ubah";
+                            $display = "style='display:none'";
+                        }else{
+                            $btn = "Simpan";
+                            $display = "style='display:none'";
+                        }
+                        // echo $btn;
+                    ?>
+                <div class="form-group row" <?= $display ?>>
+                    <label class="col-md-3 col-form-label" for="file-input">Role</label>
+                    <div class="col-md-9">
+                        <input id="role" type="text" name="role" value="1">
+                    </div>
+                </div>
+                <div class="card-footer" align="center">
+                    <input class="btn btn-sm btn-primary" type="submit" value="<?= $btn ?>" style="width:50%">
+                        <!-- <i class="fa fa-dot-circle-o"></i>  -->
+                <!-- <button class="btn btn-sm btn-danger" type="reset">
+                    <i class="fa fa-ban"></i> Reset</button> -->
+                </div>
+            </form>
             </div>
-         </div>
-      </div>
-   </div>
+        </div>
+    </div>
+    <!-- /.col-->
 </div>

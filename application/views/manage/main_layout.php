@@ -46,5 +46,6 @@
     <script src="<?= base_url(); ?>assets/vendor/datatables.net-bs4/js/jquery.dataTables.js"></script>
     <script src="<?= base_url(); ?>assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.js"></script>
     <script src="<?= base_url(); ?>assets/vendor/datatables.net-bs4/js/datatables.js"></script>
+    <script src="<?= base_url(); ?>assets/js/main.js"></script>
   </body>
 </html>

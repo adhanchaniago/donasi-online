@@ -11,6 +11,7 @@
             </div>
       </div>
         <div class="row">
+          <?php if(count($row) > 0 ){?>
         <?php foreach($row as $value){ ?>
           <a href="<?= base_url('site/action/detail/donasi/').base64_encode($value['id']); ?>" style="text-decoration: none;">
             <div class="col-sm-4" style="margin-bottom: 20px;">
@@ -27,6 +28,9 @@
                 </div>
             </div>
           </a>
+        <?php } ?>
+        <?php }else{ ?>
+            <h1>Data Donasi untuk sementara belum tersedia</h1>
         <?php } ?>
         </div>
         <br><br>

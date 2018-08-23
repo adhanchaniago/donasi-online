@@ -35,13 +35,15 @@
               <div class="card-body">
                 <h1>Login</h1>
                 <p class="text-muted">Sign In to your account</p>
+
+                <form action="<?php echo base_url('login/aksi_login'); ?>" method="post">
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text">
                       <i class="icon-user"></i>
                     </span>
                   </div>
-                  <input class="form-control" type="text" placeholder="Username">
+                  <input class="form-control" type="email" name="email" required placeholder="Masukan Email Anda">
                 </div>
                 <div class="input-group mb-4">
                   <div class="input-group-prepend">
@@ -49,17 +51,18 @@
                       <i class="icon-lock"></i>
                     </span>
                   </div>
-                  <input class="form-control" type="password" placeholder="Password">
+                  <input class="form-control" type="password" name="password" required placeholder="Masukan Password Anda">
                 </div>
                 <div class="row">
                   <div class="col-6">
                     <!-- <button class="btn btn-primary px-4" type="button">Login</button> -->
-                    <a href="<?= base_url('manage/dashboard'); ?>" class="btn btn-primary px-4" style="width:50%">Login</a>
+                    <input type="submit" class="btn btn-primary px-4" style="width:50%" value="Login">
                   </div>
                   <!-- <div class="col-6 text-right">
                     <button class="btn btn-link px-0" type="button">Forgot password?</button>
                   </div> -->
                 </div>
+                </form>
               </div>
             </div>
             <!-- <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">

@@ -13,7 +13,7 @@
             </div>
             <div class="card-body">
                 <div style="padding: 0px 60px;">
-                    <a href="<?= base_url('manage/action/add/kegiatan'); ?>" class="btn btn-primary btn-sm">Tambah Data</a>
+                    <a href="<?= base_url('manage/action/add/kegiatan'); ?>" class="btn btn-primary btn-sm">Cetak Data</a>
                     <a href="<?= base_url('manage/action/add/kegiatan'); ?>" class="btn btn-danger btn-sm">Kirim Data</a>
                 </div>
                 <br>
@@ -27,20 +27,21 @@
                                  <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Date registered: activate to sort column ascending" style="width: 170px;">Target Dana</th>
                                  <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Role: activate to sort column ascending" style="width: 68px;">Unix Id</th>
                                  <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 82px;">Tgl. Mulai</th>
-                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 82px;">Tgl. Berakhir</th>
+                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 82px;">Dana Terkumpul</th>
                               </tr>
                            </thead>
                            <tbody>
+                           <?php foreach($result as $value){ ?>
                               <tr role="row" class="odd">
-                                 <td class="sorting_1">Adam Alister</td>
-                                 <td>2012/01/21</td>
-                                 <td>Staff</td>
-                                 <td>Staff</td>
+                                 <td class="sorting_1"><?= $value['nama_kegiatan'] ?></td>
+                                 <td><?= "Rp. " . number_format($value['target_dana'],0) ?></td>
+                                 <td><?= $value['unix_id'] ?></td>
+                                 <td><?= $value['start_date'] ?></td>
                                  <td>
-                                    <span class="badge badge-success">Active</span>
+                                 <?= "Rp. " . number_format($value['total_terkumpul'],0) ?>
                                  </td>
                               </tr>
-                              </tr>
+                           <?php } ?>
                            </tbody>
                         </table>
                         <!-- Modal -->

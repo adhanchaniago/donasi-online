@@ -6,18 +6,22 @@ class Manage extends CI_Controller {
 	public function __construct() {
         parent::__construct();
         $this->load->model('m_manage','manage');
-        // if (!$this->session->userdata('logged_in')){
-		// 	redirect('login');
+        // if($this->session->userdata('status') != "login"){
+		// 	redirect("manage");
 		// }
     }
 
 	public function index()
 	{
 		$this->load->view('manage/content/login');
+		// redirect('login');
 	}
 
 	public function dashboard()
 	{
+		// if($this->session->userdata('status') != "login"){
+		// 	redirect("manage");
+		// }
 		$data['content'] = 'manage/content/_dashboard';
 		$this->load->view('manage/main_layout',$data);
 	}
@@ -38,8 +42,10 @@ class Manage extends CI_Controller {
 	public function laporan($act)
 	{
 		if($act == 'donasi'){
+			// $data['result'] = $this->manage->getData('laporan_donasi');
 			$data['content'] = 'manage/content/_laporan_donasi';
 		}else{
+			$data['result'] = $this->manage->getData('laporan_kegiatan');
 			$data['content'] = 'manage/content/_laporan_kegiatan';
 		}
 		$this->load->view('manage/main_layout',$data);

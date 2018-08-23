@@ -4,11 +4,18 @@
           <ul class="nav">
             <li class="nav-item">
               <a class="nav-link" href="<?= base_url('manage/dashboard'); ?>">
-                <i class="nav-icon icon-speedometer"></i> Dashboard
+                <i class="nav-icon icon-speedometer"></i> Dashboard 
                 <!-- <span class="badge badge-primary">NEW</span> -->
               </a>
             </li>
             <li class="nav-title">List</li>
+            <?php if($this->session->userdata('id_user_role') == 2){ ?>
+              <li class="nav-item">
+                <a href="<?= base_url('manage/kegiatan'); ?>" class="nav-link" href="colors.html">
+                  <i class="fa fa-window-maximize"></i> Konfirmasi
+                </a>
+            </li>
+            <?php }else{ ?>
             <li class="nav-item">
               <a href="<?= base_url('manage/kegiatan'); ?>" class="nav-link" href="colors.html">
                 <i class="fa fa-window-maximize"></i> Kegiatan
@@ -51,11 +58,12 @@
                 </li>
               </ul>
             </li>
+            <?php } ?>
+
             <li class="nav-item">
-              <a href="#" class="nav-link" href="typography.html">
+              <a href="<?= base_url('login/logout'); ?>" class="nav-link" href="typography.html">
                 <i class="fa fa-sign-out"></i> Keluar</a>
             </li>
-            
           </ul>
         </nav>
         <button class="sidebar-minimizer brand-minimizer" type="button"></button>

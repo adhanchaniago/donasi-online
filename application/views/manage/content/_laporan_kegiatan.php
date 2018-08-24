@@ -27,7 +27,7 @@
                                  <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Date registered: activate to sort column ascending" style="width: 170px;">Target Dana</th>
                                  <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Role: activate to sort column ascending" style="width: 68px;">Unix Id</th>
                                  <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 82px;">Tgl. Mulai</th>
-                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 82px;">Dana Terkumpul</th>
+                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 82px;">Tgl. Berakhir</th>
                               </tr>
                            </thead>
                            <tbody>
@@ -38,7 +38,8 @@
                                  <td><?= $value['unix_id'] ?></td>
                                  <td><?= $value['start_date'] ?></td>
                                  <td>
-                                 <?= "Rp. " . number_format($value['total_terkumpul'],0) ?>
+                                 <?//= "Rp. " . number_format($value['total_terkumpul'],0) ?>
+                                 <?= $value['end_date'] ?>
                                  </td>
                               </tr>
                            <?php } ?>

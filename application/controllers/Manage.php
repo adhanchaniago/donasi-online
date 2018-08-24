@@ -42,7 +42,7 @@ class Manage extends CI_Controller {
 	public function laporan($act)
 	{
 		if($act == 'donasi'){
-			// $data['result'] = $this->manage->getData('laporan_donasi');
+			$data['result'] = $this->manage->getData('laporan_donasi');
 			$data['content'] = 'manage/content/_laporan_donasi';
 		}else{
 			$data['result'] = $this->manage->getData('laporan_kegiatan');
@@ -76,6 +76,9 @@ class Manage extends CI_Controller {
 				$this->load->view('manage/main_layout',$data);
 			}elseif($act == 'bank'){
 				$data['content'] = 'manage/content/_bank';
+				$this->load->view('manage/main_layout',$data);
+			}elseif($act == 'keterangan'){
+				$data['content'] = 'manage/content/_keterangan';
 				$this->load->view('manage/main_layout',$data);
 			}
 		}else if($type == 'update'){
@@ -216,6 +219,77 @@ class Manage extends CI_Controller {
 				redirect('manage/data/bank');
 			}
 		}
+	}
+
+	public function export(){
+		$this->load->library('m_pdf');
+		error_reporting(E_ALL);
+		$nama_dokumen='PDF';
+		$mpdf=new mPDF('utf-8', 'A4', 10.5, 'arial');
+		ob_start();
+		$data['result'] = $this->manage->getData('laporan_donasi');
+		$_view = "<h1 align='center'>Laporan Donasi</h1>";
+		$_view .= "<table border=1 class='.table-striped'>";
+		$_view .= "<tr>";
+			$_view .= "<th>Nama Kegiatan</th>";
+			$_view .= "<th>Target Donasi</th>";
+			$_view .= "<th>Total Donasi</th>";
+			$_view .= "<th>Nama Bank</th>";
+			$_view .= "<th>Keterangan</th>";
+		$_view .= "</tr>";
+		foreach($data['result'] as $value){
+			$_view .= "<tr>";
+				$_view .= "<td>".$value['nama_kegiatan']."</td>";
+				$_view .= "<td>Rp. " . number_format($value['target_dana'],0,',','.')."</td>";
+				$_view .= "<td>Rp. " . number_format($value['total_terkumpul'],0,',','.')."</td>";
+				$_view .= "<td>".$value['nama_bank']."</td>";
+				$_view .= "<td>".$value['keterangan']."</td>";
+			$_view .= "</tr>";
+		}
+		$_view .= "</table>";
+		echo $_view;
+			
+		$html = ob_get_contents();
+		//ob_end_clean();
+		$mpdf->WriteHTML(utf8_encode($html));
+		$mpdf->Output($nama_dokumen.".pdf" ,'I');
+		exit;
+	}
+
+	// public function kirimEmailDonatur(){
+	// 	$data['result'] = $this->manage->getData('laporan_donasi');
+	// 	foreach($data['result'] as $value){
+	// 		$this->sendEmail($value);
+	// 	}
+	// }
+
+	public function kirimEmailDonatur(){
+		$data['result'] = $this->manage->getData('laporan_donasi');
+		// echo "<pre>";
+		// print_r($data);die;
+		$totalData = count($data);
+		for($i=0;$i>$totalData;$i++){
+			$subject = "Laporan Donasi";
+			$msg = "Terim Kasih sudah berdonasi";//$this->load->view('manage/content/_email_laporan_donasi',$data,TRUE);
+			$email = $data[$i]['result']['email'];
+			// print_r($email);die;
+			$ci = get_instance();
+			$config['protocol'] = "smtp";
+			$config['smtp_host'] = "ssl://smtp.googlemail.com";
+			$config['smtp_port'] = "465";
+			$config['smtp_user'] = "nuridin50@gmail.com";
+			$config['smtp_pass'] = "unaspasim";
+			$config['charset'] = "utf-8";
+			$config['mailtype'] = "html";
+			$config['newline'] = "\r\n";
+			$ci->email->initialize($config);
+			$ci->email->from('nuridin.mu23@gmail.com', 'PAY');
+			$ci->email->to($email);
+			$ci->email->subject($subject);
+			$ci->email->message($msg);
+			$this->email->send();
+		}
+		redirect('manage/laporan/donasi');
 	}
 
 	public function generateUnixId($digits = 9){

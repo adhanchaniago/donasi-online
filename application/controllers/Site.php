@@ -4,7 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Site extends CI_Controller {
 	public function __construct() {
         parent::__construct();
-        $this->load->model('m_site','site');
+		$this->load->model('m_site','site');
+		$this->load->library('email'); 
         // if (!$this->session->userdata('logged_in')){
 		// 	redirect('login');
 		// }
@@ -54,13 +55,58 @@ class Site extends CI_Controller {
 				);
 				$this->db->insert('app_trx_donatur',$data_trx);
 				$data['row'] = $this->site->getData('trx_donasi',$id_trx);
+				$this->sendEmail($data);
 				$this->load->view('content/_thankyou',$data);
 			}
 		}
 	}
 
-	public function sendEmail(){
+	public function sendEmail($data){
+		$subject = "Transfer Rp ". number_format($data['row'][0]['total_donasi'],0,',','.')." ke Rekening berikut";
+		$msg = $this->load->view('manage/content/_email_detail_transfer',$data,TRUE);
+		$email = $data['row'][0]['email'];
+		$ci = get_instance();
+		$config['protocol'] = "smtp";
+		$config['smtp_host'] = "ssl://smtp.googlemail.com";
+		$config['smtp_port'] = "465";
+		$config['smtp_user'] = "nuridin50@gmail.com";
+		$config['smtp_pass'] = "unaspasim";
+		$config['charset'] = "utf-8";
+		$config['mailtype'] = "html";
+		$config['newline'] = "\r\n";
+		$ci->email->initialize($config);
+		$ci->email->from('nuridin.mu23@gmail.com', 'PAY');
+		// $list = array('nuridin50@gmail.com');
+		$ci->email->to($email);
+		$ci->email->subject($subject);
+		$ci->email->message($msg);
+		$this->email->send();
+		// $this->load->view('manage/content/_email_detail_transfer',$data,TRUE);
+		// if ($this->email->send()) {
+		// 	echo 'Email sent.';
+		// } else {
+		// 	show_error($this->email->print_debugger());
+		// }
+	}
 
+	public function export(){
+		$this->load->library('m_pdf');
+		error_reporting(E_ALL);
+		$nama_dokumen='PDF';
+		$mpdf=new mPDF('utf-8', 'A4', 10.5, 'arial');//
+		ob_start();
+		echo "test laporan pdf";
+			
+		$html = ob_get_contents();
+		//ob_end_clean();
+		$mpdf->WriteHTML(utf8_encode($html));
+		$mpdf->Output($nama_dokumen.".pdf" ,'I');
+		exit;
+	}
+
+	public function laporan(){
+		// echo $_SERVER['HTTP_HOST'];die;
+		$this->load->view('manage/content/_email_detail_transfer');
 	}
 	
 }

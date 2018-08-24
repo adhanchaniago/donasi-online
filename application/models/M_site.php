@@ -22,10 +22,11 @@ class M_site extends CI_Model {
             $query = "SELECT * FROM app_bank 
                       WHERE status=1";
         }elseif($act == 'trx_donasi'){
-            $query = "SELECT td.*,ak.`nama_kegiatan`,ak.`unix_id`,ab.`no_rekening`,ab.`nama_bank`,ab.`nama_pemilik`,ab.`cabang`,ab.logo_bank,sum(td.jumlah_donasi + ak.unix_id) AS total_donasi
+            $query = "SELECT td.*,ak.`nama_kegiatan`,ak.image,ak.`unix_id`,ab.`no_rekening`,ab.`nama_bank`,ab.`nama_pemilik`,ab.`cabang`,ab.logo_bank,sum(td.jumlah_donasi + ak.unix_id) AS total_donasi,us.fullname,us.email
                     FROM app_trx_donatur td
                     LEFT JOIN app_kegiatan ak ON td.`id_kegiatan` = ak.id
                     LEFT JOIN app_bank ab ON td.`id_bank_transfer` = ab.id
+                    LEFT JOIN app_users us ON td.`id_users` = us.id
                     WHERE td.id = '$id'";
         }elseif($act == 'history_trx'){
             $query = "SELECT MAX(id) as id FROM history_trx";

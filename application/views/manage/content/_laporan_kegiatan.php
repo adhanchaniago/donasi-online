@@ -13,8 +13,8 @@
             </div>
             <div class="card-body">
                 <div style="padding: 0px 60px;">
-                    <a href="<?= base_url('manage/action/add/kegiatan'); ?>" class="btn btn-primary btn-sm">Cetak Data</a>
-                    <a href="<?= base_url('manage/action/add/kegiatan'); ?>" class="btn btn-danger btn-sm">Kirim Data</a>
+                    <a href="<?= base_url('manage/export/kegiatan'); ?>" target="_blank" class="btn btn-primary btn-sm">Cetak Data</a>
+                    <!-- <a href="<?//= base_url('manage/action/add/kegiatan'); ?>" class="btn btn-danger btn-sm">Kirim Data</a> -->
                 </div>
                 <br>
                <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">

@@ -39,13 +39,14 @@
                                     <?= $value['bukti_donasi']; ?>
                                  </td>
                                  <td>
-                                    <a class="btn btn-info" href="<?= base_url('manage/action/update/kegiatan'); ?>">
+                                    <!-- <a class="btn btn-info" href="<?//= base_url('manage/action/update/kegiatan'); ?>">
                                         <i class="fa fa-edit "></i>Konfirmasi
-                                    </a>
+                                    </a> -->
                                     <!-- <a class="btn btn-danger" href="<?//= base_url('manage/action/delete/kegiatan'); ?>">
                                         <i class="fa fa-trash-o "></i>Hapus
                                     </a> -->
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelKeg"><i class="fa fa-trash-o "></i>Hapus</button>
+                                    <a href="<?= base_url('manage/execute/verifikasi/donasi/').$value['id']; ?>" class="btn btn-info" onclick="return confirm('Apakah Anda yakin ingin konfirmasi data ini?')"><i class="fa fa-edir "></i>Konfirmasi</a>
+                                    <a href="<?= base_url('manage/execute/delete/donasi/').$value['id']; ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="fa fa-trash-o "></i>Hapus</a>
                                  </td>
                               </tr>
                                <?php } ?>

@@ -13,7 +13,7 @@
             </div>
             <div class="card-body">
                 <div style="padding: 0px 60px;">
-                    <a href="<?= base_url('manage/export'); ?>" target="_blank" class="btn btn-primary btn-sm">Cetak Data</a>
+                    <a href="<?= base_url('manage/export/donasi'); ?>" target="_blank" class="btn btn-primary btn-sm">Cetak Data</a>
                     <a href="<?= base_url('manage/kirimEmailDonatur'); ?>" class="btn btn-danger btn-sm">Kirim Data</a>
                 </div>
                 <br>
@@ -42,10 +42,10 @@
                                     <td><?= "Rp. " . number_format($value['total_terkumpul'],0,',','.') ?></td>
                                     <td><?= $value['nama_bank'] ?></td>
                                     <td>
-                                    <?//= "Rp. " . number_format($kekurangan_dana,0,',','.'); ?>
+                                    <?= $value['keterangan']; ?>
                                     </td>
                                     <td>
-                                        <a class="btn btn-primary" href="<?= base_url('manage/action/add/keterangan/').base64_encode($value['id']); ?>">
+                                        <a class="btn btn-primary" href="<?= base_url('manage/action/update/keterangan/').base64_encode($value['id']); ?>">
                                             <i class="fa fa-plus "></i>Tambah Keterangan
                                         </a>
                                     </td>

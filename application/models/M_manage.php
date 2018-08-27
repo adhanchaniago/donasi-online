@@ -36,14 +36,18 @@ class M_manage extends CI_Model {
                         LEFT JOIN app_kegiatan ak ON ak.id = td.id_kegiatan
                         GROUP BY ak.id";
         }elseif($act == 'laporan_donasi'){
-            $query = "SELECT td.*, ak.*,SUM(td.jumlah_donasi) AS total_terkumpul,ab.`nama_bank`,us.fullname,us.email
+            $query = "SELECT td.*, ak.nama_kegiatan,ak.image,ak.`target_dana`,SUM(td.jumlah_donasi) AS total_terkumpul,
+                    ab.`nama_bank`,us.fullname,us.email  as email2
                     FROM `app_trx_donatur` td
-                    LEFT JOIN app_kegiatan ak ON ak.id = td.id_kegiatan
+                    LEFT JOIN app_kegiatan ak ON td.id_kegiatan = ak.id 
                     LEFT JOIN app_bank ab ON td.`id_bank_transfer` = ab.id
                     LEFT JOIN app_users us ON td.`id_users` = us.id
                     GROUP BY ak.id";
         }
         $result = $this->db->query($query);
+
+        // echo "<pre>";
+        // print_r($result->result_array());die;
         return $result->result_array();
     }
 

@@ -26,6 +26,7 @@
                                  <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Date registered: activate to sort column ascending" style="width: 170px;">Kegiatan</th>
                                  <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Role: activate to sort column ascending" style="width: 68px;">Jumlah Donasi</th>
                                  <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 82px;">Bukti Donasi</th>
+                                 <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 82px;">Status</th>
                                  <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending" style="width: 168px;">Actions</th>
                               </tr>
                            </thead>
@@ -39,14 +40,15 @@
                                     <?= $value['bukti_donasi']; ?>
                                  </td>
                                  <td>
-                                    <!-- <a class="btn btn-info" href="<?//= base_url('manage/action/update/kegiatan'); ?>">
-                                        <i class="fa fa-edit "></i>Konfirmasi
-                                    </a> -->
-                                    <!-- <a class="btn btn-danger" href="<?//= base_url('manage/action/delete/kegiatan'); ?>">
-                                        <i class="fa fa-trash-o "></i>Hapus
-                                    </a> -->
-                                    <a href="<?= base_url('manage/execute/verifikasi/donasi/').$value['id']; ?>" class="btn btn-info" onclick="return confirm('Apakah Anda yakin ingin konfirmasi data ini?')"><i class="fa fa-edir "></i>Konfirmasi</a>
-                                    <a href="<?= base_url('manage/execute/delete/donasi/').$value['id']; ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="fa fa-trash-o "></i>Hapus</a>
+                                    <?php 
+                                        $cekStatus = ($value['verifikasi'] == 1 ? "style='pointer-events: none'" : "" );
+                                        $status = ($value['verifikasi'] == 1 ? "<span class='badge badge-success'>Data Terverikasi</span>" : "<span class='badge badge-danger'>Data Belum Terverikasi</span>" );
+                                    ?>
+                                     <?= $status ?>
+                                 </td>
+                                 <td>
+                                    <a href="<?= base_url('manage/execute/update/verifikasi/').$value['id_trx']; ?>" class="btn btn-info" <?= $cekStatus ?> onclick="return confirm('Apakah Anda yakin ingin verifikasi data ini?')"><i class="fa fa-edir "></i>Verifikasi</a>
+                                    <!-- <a href="<?//= base_url('manage/execute/delete/donasi/').$value['id_trx']; ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="fa fa-trash-o "></i>Hapus</a> -->
                                  </td>
                               </tr>
                                <?php } ?>

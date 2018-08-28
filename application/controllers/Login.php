@@ -23,12 +23,13 @@ class Login extends CI_Controller{
 		$data = $this->m_login->getData($email);
 		if($cek > 0){
 			$data_session = array(
+                'id_user' => $data[0]['id'],
                 'nama' => $data[0]['fullname'],
                 'id_user_role' => $data[0]['id_user_role'],
 				'email' => $email,
 				'status' => "login"
 			);
-
+			// print_r($data_session);
 			$this->session->set_userdata($data_session);
 
 			redirect(base_url("manage/dashboard"));

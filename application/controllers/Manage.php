@@ -35,6 +35,9 @@ class Manage extends CI_Controller {
 
 	public function konfirmasi()
 	{
+		$id_user = $this->session->userdata('id_user');
+		// echo $id_user;die;
+		$data['result'] = $this->manage->getData('konfirmasi',$id_user);
 		$data['content'] = 'manage/content/_list_konfirmasi';
 		$this->load->view('manage/main_layout',$data);
 	}
@@ -94,6 +97,10 @@ class Manage extends CI_Controller {
 			}elseif($act == 'keterangan'){
 				$data['id'] = base64_decode($id);
 				$data['content'] = 'manage/content/_keterangan';
+				$this->load->view('manage/main_layout',$data);
+			}elseif($act == 'konfirmasi'){
+				$data['id'] = base64_decode($id);
+				$data['content'] = 'manage/content/_form_konfirmasi';
 				$this->load->view('manage/main_layout',$data);
 			}
 		}else if($type == 'delete'){
@@ -210,6 +217,23 @@ class Manage extends CI_Controller {
 				$this->db->update('app_trx_donatur', array('keterangan' => $keterangan));
 				// echo $this->db->last_query();die;
 				redirect('manage/laporan/donasi');
+			}elseif($act == 'konfirmasi'){
+				$target_dir = "assets/upload/bukti_transfer/";
+				$target_file = $target_dir . time().basename($_FILES["bukti_transfer"]["name"]);
+				$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+				$imgName = time().basename($_FILES["bukti_transfer"]["name"]);
+				move_uploaded_file($_FILES["bukti_transfer"]["tmp_name"], $target_file);
+
+				$keterangan = $this->input->post('id');
+				$this->db->where('id', $id);
+				$this->db->update('app_trx_donatur', array('bukti_donasi' => $imgName));
+				// print_r($this->db->last_query());die;
+				redirect('manage/konfirmasi');
+			}elseif($act == 'verifikasi'){
+				$this->db->where('id', $id);
+				$this->db->update('app_trx_donatur', array('verifikasi' => 1));
+				// echo $this->db->last_query();die;
+				redirect('manage/data/donasi');
 			}
 		}elseif($type == 'delete'){
 			if($act == 'kegiatan'){

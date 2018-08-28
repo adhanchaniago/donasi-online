@@ -13,7 +13,8 @@ class M_manage extends CI_Model {
                     LEFT JOIN app_users_role b ON a.`id_user_role` = b.id
                     WHERE a.id_user_role = 1";
         }elseif($act == 'donatur'){
-            $query = "SELECT a.*,b.*,c.`nama_kegiatan`,d.nama_bank
+            
+            $query = "SELECT a.id as id_trx,a.id_users,a.id_kegiatan,a.jumlah_donasi,a.unix_id,a.keterangan,a.id_bank_transfer,a.konfirmasi,a.bukti_donasi,a.verifikasi,a.created_at,b.*,c.`nama_kegiatan`,d.nama_bank
                         FROM app_trx_donatur a
                         LEFT JOIN app_users b ON a.`id_users` = b.id
                         LEFT JOIN app_kegiatan c ON c.id = a.`id_kegiatan`
@@ -37,17 +38,24 @@ class M_manage extends CI_Model {
                         GROUP BY ak.id";
         }elseif($act == 'laporan_donasi'){
             $query = "SELECT td.*, ak.nama_kegiatan,ak.image,ak.`target_dana`,SUM(td.jumlah_donasi) AS total_terkumpul,
-                    ab.`nama_bank`,us.fullname,us.email  as email2
+                    ab.`nama_bank`,us.fullname,us.email
                     FROM `app_trx_donatur` td
                     LEFT JOIN app_kegiatan ak ON td.id_kegiatan = ak.id 
                     LEFT JOIN app_bank ab ON td.`id_bank_transfer` = ab.id
                     LEFT JOIN app_users us ON td.`id_users` = us.id
                     GROUP BY ak.id";
+        }elseif($act == 'konfirmasi'){
+            $query = "SELECT td.*, ak.nama_kegiatan,ak.image,ak.`target_dana`,
+                        ab.`nama_bank`,us.fullname,us.email
+                        FROM `app_trx_donatur` td 
+                        LEFT JOIN app_kegiatan ak ON ak.id = td.id_kegiatan 
+                        LEFT JOIN app_bank ab ON td.`id_bank_transfer` = ab.id 
+                        LEFT JOIN app_users us ON td.`id_users` = us.id
+                        WHERE td.id_users = $id
+                        ORDER BY td.`created_at` DESC";
         }
+        // echo $query;die;
         $result = $this->db->query($query);
-
-        // echo "<pre>";
-        // print_r($result->result_array());die;
         return $result->result_array();
     }
 

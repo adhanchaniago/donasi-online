@@ -11,7 +11,7 @@
             <li class="nav-title">List</li>
             <?php if($this->session->userdata('id_user_role') == 2){ ?>
               <li class="nav-item">
-                <a href="<?= base_url('manage/kegiatan'); ?>" class="nav-link" href="colors.html">
+                <a href="<?= base_url('manage/konfirmasi'); ?>" class="nav-link" href="colors.html">
                   <i class="fa fa-window-maximize"></i> Konfirmasi
                 </a>
             </li>

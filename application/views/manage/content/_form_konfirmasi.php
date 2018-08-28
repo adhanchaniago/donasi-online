@@ -4,16 +4,17 @@
             <div class="card-header">
                 <?php 
                     $act = $this->uri->segment(3);
+                    $id = $this->uri->segment(5);
                 ?>
-            <strong><?php echo ucfirst($act); ?></strong> Keterangan</div>
+            <strong><?php echo ucfirst($act); ?></strong> Konfirmasi</div>
             <div class="card-body">
-            <form class="form-horizontal" action="<?= base_url('manage/execute/'.$act.'/keterangan/').($act == 'add' ? "" : $id); ?>" method="post" enctype="multipart/form-data">
+            <form class="form-horizontal" action="<?= base_url('manage/execute/'.$act.'/konfirmasi/').($act == 'add' ? "" : $id); ?>" method="post" enctype="multipart/form-data">
                
                 <div class="form-group row">
-                    <label class="col-md-3 col-form-label" for="password-input">Keterangan</label>
+                    <label class="col-md-3 col-form-label" for="password-input">Bukti Transfer</label>
                     <div class="col-md-9">
                         <input type="hidden" name="id" value="<?= $id; ?>">
-                        <textarea name="keterangan" class="form-control" id="" cols="50" rows="10" placeholder="Masukan Keterangan"></textarea>
+                        <input type="file" name="bukti_transfer">                        
                     </div>
                 </div>
                 <div class="card-footer" align="center">

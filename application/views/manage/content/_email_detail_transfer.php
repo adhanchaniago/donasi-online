@@ -38,7 +38,7 @@
                                                                            <table style="border-collapse:collapse" border="0" width="100%" cellspacing="0" cellpadding="0" align="left">
                                                                               <tbody>
                                                                                  <tr>
-                                                                                    <td align="left" valign="middle"><a href="#" rel="noopener noreferrer" target="_blank" data-saferedirecturl="#"><img style="display:inline-block;border:0;height:auto;outline:none;text-decoration:none" src="<?= $_SERVER['HTTP_HOST'] ?><?= $_SERVER['HTTP_HOST'] ?>/assets/img/pay-logo.png" alt="&nbsp;" width="78" height="30" border="0"></a></td>
+                                                                                    <td align="left" valign="middle"><a href="#" rel="noopener noreferrer" target="_blank" data-saferedirecturl="#"><img style="display:inline-block;border:0;height:auto;outline:none;text-decoration:none" src="<?= $_SERVER['HTTP_HOST'] ?>/assets/img/pay-logo.png" alt="&nbsp;" width="78" height="30" border="0"></a></td>
                                                                                     <td class="m_-5056524098417830653vspacer15" align="left" width="45px">&nbsp;</td>
                                                                                  </tr>
                                                                               </tbody>

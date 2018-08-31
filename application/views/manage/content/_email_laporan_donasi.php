@@ -1,3 +1,4 @@
+<?php //echo "<pre>";print_r($row); ?>
 <div class="">
    <div class="aHl"></div>
    <div id=":1qj" tabindex="-1"></div>
@@ -18,7 +19,7 @@
                                           <tbody class="m_-5056524098417830653mcnTextBlockOuter">
                                              <tr>
                                                 <td id="m_-5056524098417830653templatePreheader" style="background-color:#fafafa;background-image:none;background-repeat:no-repeat;background-position:center;background-size:cover;border-top:0;border-bottom:0;padding-top:10px;padding-bottom:10px;font-size:9px" valign="top">
-                                                   <p style="line-height:12px;margin-bottom:0px;color:#666666;font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:9px;font-weight:normal;text-align:center;margin:0;padding:0"><span style="font-weight:400">Kontribusi kamu dalam upaya pemberian bantuan kepada korban bencana telah jauh melangkah.</span></p>
+                                                   <!-- <p style="line-height:12px;margin-bottom:0px;color:#666666;font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:9px;font-weight:normal;text-align:center;margin:0;padding:0"><span style="font-weight:400">Kontribusi kamu dalam upaya pemberian bantuan kepada korban bencana telah jauh melangkah.</span></p> -->
                                                 </td>
                                              </tr>
                                              <tr>
@@ -38,7 +39,7 @@
                                                                            <table style="border-collapse:collapse" border="0" width="100%" cellspacing="0" cellpadding="0" align="left">
                                                                               <tbody>
                                                                                  <tr>
-                                                                                    <td align="left" valign="middle"><a href="#" rel="noopener noreferrer" target="_blank" data-saferedirecturl="#"><img style="display:inline-block;border:0;height:auto;outline:none;text-decoration:none" src="<?= $_SERVER['HTTP_HOST'] ?><?= $_SERVER['HTTP_HOST'] ?>/assets/img/pay-logo.png" alt="&nbsp;" width="78" height="30" border="0"></a></td>
+                                                                                    <td align="left" valign="middle"><a href="#" rel="noopener noreferrer" target="_blank" data-saferedirecturl="#"><img style="display:inline-block;border:0;height:auto;outline:none;text-decoration:none" src="<?= $_SERVER['HTTP_HOST'] ?>/assets/img/pay-logo.png" alt="&nbsp;" width="78" height="30" border="0"></a></td>
                                                                                     <td class="m_-5056524098417830653vspacer15" align="left" width="45px">&nbsp;</td>
                                                                                  </tr>
                                                                               </tbody>
@@ -77,37 +78,19 @@
                                                                   <tbody>
                                                                      <tr>
                                                                         <td class="m_-5056524098417830653mcnTextContent" valign="top">
-                                                                           <h2 style="color:#00b14f;display:block;margin:0;padding:0;font-family:Helvetica;font-size:22px;font-style:normal;font-weight:bold;line-height:150%;letter-spacing:normal;text-align:center"><strong><strong>Kontribusi kamu telah jauh melangkah.</strong></strong></h2>
+                                                                           <h2 style="color:#00b14f;display:block;margin:0;padding:0;font-family:Helvetica;font-size:22px;font-style:normal;font-weight:bold;line-height:150%;letter-spacing:normal;text-align:center"><strong><strong>Donasi sudah tersalurkan.</strong></strong></h2>
                                                                            <p>&nbsp;</p>
                                                                             <table style="width:100%;margin:0;padding:0;">
                                                                                 <tbody>
                                                                                     <tr style="margin:0;padding:0;color:#808080">
                                                                                         <td style="margin:0;padding:0;">
                                                                                             <div style="margin:0;padding:0;">
-                                                                                            <span style="font-weight:normal;margin:0;padding:0;"><?= $row[0]['fullname'] ?>, terima kasih atas donasi Anda untuk "<?= $row[0]['nama_kegiatan'] ?>". </span><br>
+                                                                                            <span style="font-weight:normal;margin:0;padding:0;"><?//= $row[0]['fullname'] ?>Terima kasih kepada donatur yang telah memberikan donasi untuk <b><i>"<?= $row[0]['nama_kegiatan'] ?>"</i></b>. Semoga Allah catat sebagai amalan kebaikan dunia dan akhirat.</span><br>
                                                                                             <blockquote style="font-weight:normal;margin:0px 0px 0px 40px;padding:0px;border:4px none #f6f6f6;"></blockquote>
                                                                                             <b style="margin:0;padding:0;"></b>
                                                                                             </div>
-                                                                                            <h2 style="line-height:1.4;color:#30373D;font-weight:500;font-size:30px;margin:0 0 25px;padding:0;"><b style="margin:0;padding:0;">Lakukan Transfer sebesar:</b><br style="margin:0;padding:0;"><span style="margin:0;padding:0;"><b style="margin:0;padding:0;"><?= "Rp ". number_format($row[0]['total_donasi'],0,',','.'); ?></b></span></h2>
-                                                                                            <div style="margin:0;padding:0;">
-                                                                                            <div style="margin:0;padding:0;"><font style="margin:0;padding:0;"><span style="white-space:pre-wrap;background:rgb(250, 250, 250);margin:0;padding:0;"><b style="margin:0;padding:0;">Tepat hingga 3 digit terakhir</b></span></font></div>
-                                                                                            </div>
-                                                                                            <div style="margin:0;padding:0;"><b style="margin:0;padding:0;"><i style="margin:0;padding:0;">(Cantumkan kode unik pada nominal transfer, supaya donasi terverifikasi)</i></b></div>
-                                                                                            <div style="margin:0;padding:0;"><span style="font-weight:normal;margin:0;padding:0;"><b style="margin:0;padding:0;"><br style="margin:0;padding:0;"></b></span><span style="font-weight:normal;margin:0;padding:0;">
-                                                                                                Ke:</span><br style="font-weight:normal;margin:0;padding:0;"><span style="font-weight:normal;margin:0;padding:0;"><b style="margin:0;padding:0;">
-                                                                                                <?= $row[0]['nama_bank'] ?> </b></span><br style="font-weight:normal;margin:0;padding:0;"><span style="font-weight:normal;margin:0;padding:0;"><b style="margin:0;padding:0;">
-                                                                                                Cabang <?= $row[0]['cabang'] ?> </b></span><br style="font-weight:normal;margin:0;padding:0;"><span style="font-weight:normal;margin:0;padding:0;"><b style="margin:0;padding:0;">
-                                                                                                No Rek. <?= $row[0]['no_rekening'] ?></b></span><br style="font-weight:normal;margin:0;padding:0;"><span style="font-weight:normal;margin:0;padding:0;"><b style="margin:0;padding:0;">
-                                                                                                a.n <?= $row[0]['nama_pemilik'] ?> <br style="margin:0;padding:0;"></b></span><br style="font-weight:normal;margin:0;padding:0;"><span style="font-weight:normal;margin:0;padding:0;">Proses transfer dapat dilakukan via <i style="margin:0;padding:0;">channel</i> apapun (ATM/mobile banking/sms banking/internet banking/teller)<br style="margin:0;padding:0;">
-                                                                                            
-                                                                                            <br style="margin:0;padding:0;">Jika sudah transfer harap konfirmasi melalui link berikut dengan akun login<b style="margin:0;padding:0;"></b>.<br><br>
-                                                                                            Email : <?= $row[0]['email'] ?><br>
-                                                                                            password : donasi2018<br><b style="margin:0;padding:0;"><br style="margin:0;padding:0;"></b>
-                                                                                            <div align="center">
-                                                                                                <a href="<?= $_SERVER['HTTP_HOST'] ?>/manage" target="_blank" style="background-color: #4CAF50;border: none;color: white;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;padding: 10px;width: 50%;">Konfirmasi</a>
-                                                                                            </div>
-                                                                                            </div>
-                                                                                            
+                                                                                            <div>
+
                                                                                             </div>
                                                                                         </td>
                                                                                     </tr>

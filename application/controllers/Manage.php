@@ -324,15 +324,11 @@ class Manage extends CI_Controller {
 	// }
 
 	public function kirimEmailDonatur(){
-		$data['result'] = $this->manage->getData('laporan_donasi');
-		// echo "<pre>";
-		// print_r($data);die;
-		$totalData = count($data);
-		for($i=0;$i>$totalData;$i++){
-			$subject = "Laporan Donasi";
-			$msg = "Terim Kasih sudah berdonasi";//$this->load->view('manage/content/_email_laporan_donasi',$data,TRUE);
-			$email = $data[$i]['result']['email'];
-			// print_r($email);die;
+		$data['row'] = $this->manage->getData('laporan_donasi');
+		foreach($data['row'] as $result){
+			$subject = "Laporan Donasi [".$result['nama_kegiatan']."]";
+			$msg = $this->load->view("manage/content/_email_laporan_donasi",$data,TRUE);
+			$email = $result['email'];
 			$ci = get_instance();
 			$config['protocol'] = "smtp";
 			$config['smtp_host'] = "ssl://smtp.googlemail.com";

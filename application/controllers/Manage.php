@@ -316,12 +316,68 @@ class Manage extends CI_Controller {
 		exit;
 	}
 
-	// public function kirimEmailDonatur(){
-	// 	$data['result'] = $this->manage->getData('laporan_donasi');
-	// 	foreach($data['result'] as $value){
-	// 		$this->sendEmail($value);
-	// 	}
-	// }
+	public function laporanTrxDonasi($id=""){
+		$id = base64_decode($id);
+		$data['result'] = $this->manage->getData('trxByKegiatan',$id);
+		// echo "<pre>";
+		// print_r($data);die;
+		$this->load->library('m_pdf');
+		$nama_dokumen='PDF';
+		$mpdf=new mPDF('utf-8', 'A4', 10.5, 'arial');
+		ob_start();
+		// $data['result'] = $this->manage->getData('laporan_kegiatan');
+		$_view = "<h1 align='center'>Laporan Donasi</h1>";
+		$_view .= "<h4 align='center'> Nama Kegiata : ".$data['result'][0]['nama_kegiatan']."</h4>";
+		$_view .= "<table border=1 class='table-striped' align='center' width='80%'>";
+		$_view .= "<tr>";
+			$_view .= "<th>No</th>";
+			$_view .= "<th>Periode Tanggal</th>";
+			$_view .= "<th>Jumlah</th>";
+			$_view .= "<th>Bank</th>";
+		$_view .= "</tr>";
+		$no = 0;
+		foreach($data['result'] as $value){
+			$no++;
+			$_view .= "<tr>";
+				$_view .= "<td>".$no."</td>";
+				$_view .= "<td>".$value['start_date']." - ".$value['end_date']."</td>";
+				$_view .= "<td>Rp. " . number_format($value['total_terkumpul'],0,',','.')."</td>";
+				$_view .= "<td>".$value['nama_bank']."</td>";
+			$_view .= "</tr>";
+		}
+
+		$_view .="<tr>";
+			$_view .= "<td colspan='2'>Total</td>";
+			$_view .= "<td colspan='2'>Rp. " . number_format($value['total_terkumpul'],0,',','.')."</td>";
+		$_view .= "</tr>";
+				$_view .="<tr>";
+			$_view .= "<td colspan='2'>Target</td>";
+			$_view .= "<td colspan='2'>Rp. " . number_format($value['target_dana'],0,',','.')."</td>";
+		$_view .= "</tr>";
+				$_view .="<tr>";
+			$_view .= "<td colspan='2'>Keterangan Dana</td>";
+			$_view .= "<td colspan='2'>".$data['result'][0]['keterangan']."</td>";
+		$_view .= "</tr>";
+				$_view .="<tr>";
+			$_view .= "<td colspan='2'>Alokasi</td>";
+			$_view .= "<td colspan='2'>".$data['result'][0]['keterangan']."</td>";
+		$_view .= "</tr>";
+		
+		$_view .= "</table>";
+		
+		echo $_view;
+			
+		$html = ob_get_contents();
+		//ob_end_clean();
+		$mpdf->WriteHTML(utf8_encode($html));
+		$mpdf->Output($nama_dokumen.".pdf" ,'I');
+		exit;
+		print_r($data);die;
+		// $this->load->view('manage/content/print_laporan_kegiatan');
+		// // die;
+		$data['content'] = 'manage/content/print_laporan_kegiatan';
+		$this->load->view('manage/main_layout',$data);
+	}
 
 	public function kirimEmailDonatur(){
 		$data['row'] = $this->manage->getData('laporan_donasi');

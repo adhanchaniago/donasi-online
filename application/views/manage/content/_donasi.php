@@ -38,6 +38,13 @@
                                  <td><?= "Rp. " . number_format($value['jumlah_donasi'],0); ?></td>
                                  <td>
                                     <?= $value['bukti_donasi']; ?>
+                                    <?php if(!empty($value['bukti_donasi'])){ ?>
+                                    <div align="center">
+                                        <a href="/assets/upload/bukti_transfer/<?= $value['bukti_donasi']; ?>" target="_blank">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <?php } ?>
                                  </td>
                                  <td>
                                     <?php 

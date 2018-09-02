@@ -13,7 +13,7 @@
             </div>
             <div class="card-body">
                 <div style="padding: 0px 60px;">
-                    <a href="<?= base_url('manage/export/donasi'); ?>" target="_blank" class="btn btn-primary btn-sm">Cetak Data</a>
+                    <!-- <a href="<?//= base_url('manage/export/donasi'); ?>" target="_blank" class="btn btn-primary btn-sm">Cetak Data</a> -->
                     <a href="<?= base_url('manage/kirimEmailDonatur'); ?>" class="btn btn-danger btn-sm">Kirim Data</a>
                 </div>
                 <br>
@@ -45,6 +45,9 @@
                                     <?= $value['keterangan']; ?>
                                     </td>
                                     <td>
+                                        <a class="btn btn-danger" target="_blank" href="<?= base_url('manage/laporanTrxDonasi/').base64_encode($value['id_kegiatan']); ?>">
+                                            <i class="fa fa-print "></i>Cetak
+                                        </a><br><br>
                                         <a class="btn btn-primary" href="<?= base_url('manage/action/update/keterangan/').base64_encode($value['id']); ?>">
                                             <i class="fa fa-plus "></i>Tambah Keterangan
                                         </a>

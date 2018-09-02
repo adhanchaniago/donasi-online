@@ -53,6 +53,14 @@ class M_manage extends CI_Model {
                         LEFT JOIN app_users us ON td.`id_users` = us.id
                         WHERE td.id_users = $id
                         ORDER BY td.`created_at` DESC";
+        }elseif($act == 'trxByKegiatan'){
+            $query = "SELECT td.*, ak.nama_kegiatan,ak.image,ak.`target_dana`,ak.start_date,ak.end_date,SUM(td.jumlah_donasi) AS total_terkumpul,
+                    ab.`nama_bank`,us.fullname,us.email
+                    FROM `app_trx_donatur` td
+                    LEFT JOIN app_kegiatan ak ON td.id_kegiatan = ak.id 
+                    LEFT JOIN app_bank ab ON td.`id_bank_transfer` = ab.id
+                    LEFT JOIN app_users us ON td.`id_users` = us.id
+                    WHERE ak.id = $id";
         }
         // echo $query;die;
         $result = $this->db->query($query);
